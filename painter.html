@@ -1,41 +1,99 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Painter Board</title>
+        <h2>Painter entry Bhuvan Chand</h2>
+    </head>
  
 <body>
 
-    <title>painter Board</title>
-<h2>Painter entry Bhuvan chand</h2>
+<h1>Getting input</h1>
 
-<form>
-    <label for="form1_age">The hidden painter name</label>
-    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value=Monet> <br>
+<body>
+    <form>
 
-    <label for="form1_nick">Guess the painter</label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+        <label for="form1_age">The hidden painter name</label>
+    
+        <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="Monet"> <br>
+    
+    
+    
+        <label for="form1_nick">Guess the painter</label>
 
-    <input type="button" onclick="checkPainter()" value="Check the guess">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<script> 
-var good=0
-var oops=0
-function  checkPainter(){
-    value1= document.getElementById("form1_age").value
-    value2 = document.getElementById("form1_nick").value
-    if(value1==value2){
-        good=good+1
-        alert("“You got it right")
-        result.innerHTML="Good count is :"+good
-    } else {
-        oops=oops+1
-        alert("Sorry")
-        result.innerHTML="Oops count is :"+oops
+        <input type ="text" id="form1_nick" name="form1_nick" autofocus > <br>
+    
+    
+    
+        <input type="button" onclick="checkGuess()" value="Check the guess">
+    
+    </form>
+    <p id="result">This text will be replaced</p>
+    <script>
+    
+        let good=0;
+        let oops=0;
+        let count=0;
+    
+        function checkGuess(){
+            console.log("Getting form values")
+    
+            name1 = document.getElementById("form1_age").value
+    
+            name2 = document.getElementById("form1_nick").value
+    
+            confirmed = confirm("Are these the values? "+name1+" and "+name2)          
+    
+            out = document.getElementById("result")
+    
+            if(name1==name2){
+                count=0
+    
+                good=good+1;
+    
+                alert("You got it right");
+    
+            }else {
+                if(count<3){
+                    oops=oops+1
+                    count=count+1
+                    alert("Sorry, ran out of guesses")
+                }  
+                else{
+                    alert("Sorry, ran out of guesses")
+    
+                }  
+                
+                        
+    
+            }
+            out.innerHTML=" good "+good+" oops "+oops
+        }
+        </script>
+        <div class="w3-card-4">
+            <img id="myImage" src="Gaillardia.jpg" alt="Person" width="100" height="100" onclick="swapImage()" role="button">
+        <script>
+            let useImage=1;
+            function swapImage(){
+                var image = document.getElementById('myImage');
+                switch(useImage){
+      case useImage=1:
+      image.src = "Gaillardia.jpg";
+          useImage=useImage+1;
+        break;
+      case useImage=2:
+      image.src = "Abelia.jpg";
+          useImage=useImage+1;
+        break;
+        case useImage=3:
+      image.src = "Nolana.jpg";
+      useImage=1;
+        break;
+      default:
+        // code block
     }
-}
-</script>
-
+            }
+         
+        </script>
+          </div>
 </body>
-</html> 
+</html>
